@@ -1,0 +1,13 @@
+.heading{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    font-size: large    ;
+}
+
+.cardCont{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
