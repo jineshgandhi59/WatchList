@@ -12,6 +12,31 @@ input{
     letter-spacing: 1.2px;
 }
 
+.genreList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 30px;
+  justify-content: center;
+}
+
+.genre {
+  padding: 24px 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+}
+
+.gray{
+  background-color: rgb(163, 163, 163);
+}
+
+.blue{
+  background-color: blue;
+}
+
+
 .no-movies-container {
     display: flex;
     flex-direction: column;
