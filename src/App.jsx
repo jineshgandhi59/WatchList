@@ -12,13 +12,30 @@ function App() {
     const [watchlist,setWatchlist] = useState([]);
 
     function addToWatchlist(movie) {
-        setWatchlist([...watchlist,movie]);
+        let updatedList = [...watchlist,movie];
+        setWatchlist(updatedList);
+        localStorage.setItem("movies",JSON.stringify(updatedList))
+    }
+    
+    function removeFromWatchList(movie) {
+        let idx = 0;
+        for(let i=0;i<watchlist.length;i++) {
+            if(movie.id===watchlist[i].id) {
+                idx = i;
+            }
+        }
+        const updatedList = [...watchlist];
+        updatedList.splice(idx,1);
+        setWatchlist(updatedList);
+        localStorage.setItem("movies",JSON.stringify(updatedList))
     }
 
-
-    useEffect(() => {
-        console.log(watchlist);
-    }, [watchlist]);
+    useEffect(()=>{
+        let movies = localStorage.getItem("movies");
+        if(movies) {
+            setWatchlist(JSON.parse(movies))
+        }
+    },[])
     
 
     return(
@@ -28,10 +45,10 @@ function App() {
                 <Route path='/' element={
                     <>
                         <Banner/>
-                        <Movies addToWatchlist={addToWatchlist}/>
+                        <Movies removeFromWatchList={removeFromWatchList} addToWatchlist={addToWatchlist} watchlist={watchlist}/>
                     </>
                 }> </Route>
-                <Route path='/watchlist' element={<WatchList/>}></Route>
+                <Route path='/watchlist' element={<WatchList watchlist={watchlist} removeFromWatchList={removeFromWatchList}/>}></Route>
                 <Route path='/recommended' element={<Recommended/>}></Route>
             </Routes>
         </BrowserRouter>

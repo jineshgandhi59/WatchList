@@ -3,9 +3,10 @@ import "./Movies.css";
 import Card from "./Card";
 import Pagination from "./Pagination";
 
-function Movies({addToWatchlist}) {
+function Movies({watchlist,addToWatchlist,removeFromWatchList}) {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+
 
   useEffect(() => {
     let url = `https://api.themoviedb.org/3/movie/popular?api_key=3aec63790d50f3b9fc2efb4c15a8cf99&language=en-US&page=${page}`;
@@ -33,7 +34,7 @@ function Movies({addToWatchlist}) {
       
       <div className="cardCont">
         {movies.map((movie,idx) => (
-          <Card key={idx} movie={movie} addToWatchlist={addToWatchlist} />
+          <Card key={idx} movie={movie} removeFromWatchList={removeFromWatchList} watchlist={watchlist} addToWatchlist={addToWatchlist} />
         ))}
       </div>
       

@@ -1,24 +1,32 @@
 import React, { useState } from 'react'
 import "./Card.css"
 
-function Card({movie,addToWatchlist}) {
+function Card({movie,watchlist,addToWatchlist,removeFromWatchList}) {
 
-  const [containsInWatchlist,setcontainsInWatchlist] = useState(false)
+  function watchlistContains(movie) {
+    for(let i=0;i<watchlist.length;i++) {
+      if(watchlist[i].id===movie.id) return true;
+    }
+    return false;
+  }
+  
 
   return (
+    
     <>
       <div style={{
         backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`
         }} className="card">
         {
-          containsInWatchlist ? (
-            <button className="remove">
+          watchlistContains(movie) ? (
+            <button onClick={()=>
+              removeFromWatchList(movie)
+            } className="remove">
               ❌
             </button>
           ) : (
             <button onClick={()=>{
               addToWatchlist(movie)
-              setcontainsInWatchlist(true)
             }} className="add">
               ➕
             </button>
