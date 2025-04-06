@@ -2,7 +2,7 @@ import React from 'react'
 
 function Recommended() {
   return (
-    <div>Recommended</div>
+    <h1>Coming soon...</h1>
   )
 }
 

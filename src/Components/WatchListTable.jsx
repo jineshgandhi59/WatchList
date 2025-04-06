@@ -2,7 +2,7 @@ import React from 'react'
 import "./WatchListTable.css"
 import {genreids} from "../utilities/genre.js"
 
-function WatchListTable({watchlist,removeFromWatchList,search,currGenre}) {
+function WatchListTable({watchlist,removeFromWatchList,search,currGenre,setWatchlist}) {
 
   return (
     <table>
@@ -18,15 +18,12 @@ function WatchListTable({watchlist,removeFromWatchList,search,currGenre}) {
         <tbody>
           {watchlist.filter((movie)=>{
             let searchFilter = movie.title.toLowerCase().includes(search.toLowerCase());
-            let genreFilter;
-            if(currGenre=="All Genres"){
-              genreFilter = true;
-            }
-            else{
+            let genreFilter = true;
+            if(currGenre!="All Genres"){
               genreFilter = (genreids[movie.genre_ids[0]]==currGenre);
             }
             return genreFilter && searchFilter;
-          }).map((movie) => (
+          }).reverse().map((movie) => (
             <tr key={movie.id}>
               <td className="name-column">
                 <div className="name-poster-container">

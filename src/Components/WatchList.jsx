@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import { useState } from "react";
 import { genreids } from "../utilities/genre";
 
-function WatchList({ watchlist, removeFromWatchList }) {
+function WatchList({ watchlist, removeFromWatchList,setWatchlist }) {
 
   const [search,setSearch] = useState("");
   const [genreList,setGenreList] = useState([]);
@@ -19,6 +19,7 @@ function WatchList({ watchlist, removeFromWatchList }) {
     })
     setGenreList([...genreSet]);
   },[watchlist])
+
 
   return (
     <>
@@ -35,12 +36,12 @@ function WatchList({ watchlist, removeFromWatchList }) {
             <div className="genreList"> 
             {
               genreList.map((genre, index) => (
-                <span className={genre==currGenre ? "genre blue" : "genre gray"} onClick={()=>{setCurrGenre(genre);console.log(genre)}} key={index}>{genre}</span>
+                <span className={genre==currGenre ? "genre blue" : "genre gray"} onClick={()=>{setCurrGenre(genre)}} key={index}>{genre}</span>
               ))
             }
             </div>
 
-            <WatchListTable currGenre={currGenre} search={search} watchlist={watchlist} removeFromWatchList={removeFromWatchList}></WatchListTable>
+            <WatchListTable setWatchlist={setWatchlist} currGenre={currGenre} search={search} watchlist={watchlist} removeFromWatchList={removeFromWatchList}></WatchListTable>
           </>
         ) : (
           <div className="no-movies-container">
