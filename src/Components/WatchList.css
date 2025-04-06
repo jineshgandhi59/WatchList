@@ -1,3 +1,18 @@
+.search{
+    margin: 30px 0px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+input{
+    font-size: large;
+    width: 400px;
+    padding: 20px 40px 20px 20px;
+    letter-spacing: 1.2px;
+}
+
+
 table {
     width: 100%;
     margin: 30px 0;
@@ -40,7 +55,7 @@ tbody tr:hover {
 }
 
 .name-poster-container img {
-    width: 250px;
+    width: 300px;
     height: 150px;
     object-fit: cover;
     border-radius: 8px;
@@ -64,5 +79,5 @@ tbody tr:hover {
 }
 
 .delete-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.1);  
 }

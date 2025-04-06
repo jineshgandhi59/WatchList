@@ -5,6 +5,11 @@ function WatchList({ watchlist, removeFromWatchList }) {
 
   return (
     <>
+
+      <div className="search">
+        <input placeholder="Search WatchList" type="text"/>
+      </div>
+
       <table>
         <thead>
           <tr>
