@@ -23,6 +23,7 @@ function App() {
             if(movie.id===watchlist[i].id) {
                 idx = i;
             }
+            
         }
         const updatedList = [...watchlist];
         updatedList.splice(idx,1);
