@@ -7,7 +7,7 @@ import { useState } from "react";
 function WatchList({ watchlist, removeFromWatchList }) {
 
   const [search,setSearch] = useState("");
-  
+
   return (
     <>
       {
@@ -30,10 +30,7 @@ function WatchList({ watchlist, removeFromWatchList }) {
           </div>
         )
       }
-
-
-
-
+      
     </>
   );
 }

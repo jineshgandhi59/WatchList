@@ -1,7 +1,9 @@
 import React from 'react'
 import "./WatchListTable.css"
+import {genreids} from "../utilities/genre.js"
 
 function WatchListTable({watchlist,removeFromWatchList,search}) {
+
   return (
     <table>
         <thead>
@@ -30,9 +32,7 @@ function WatchListTable({watchlist,removeFromWatchList,search}) {
               </td>
               <td>{movie.vote_average}</td>
               <td>{movie.popularity}</td>
-              <td>{movie.genre_ids.map((genre_id)=>(
-                genre_id + " "
-              ))}</td>
+              <td>{genreids[movie.genre_ids[0]]}</td>
               <td
                 onClick={() => {
                   removeFromWatchList(movie);
