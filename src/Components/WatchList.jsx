@@ -2,18 +2,23 @@ import React from "react";
 import "./WatchList.css";
 import WatchListTable from "./WatchListTable";
 import {Link} from 'react-router-dom'
+import { useState } from "react";
 
 function WatchList({ watchlist, removeFromWatchList }) {
 
+  const [search,setSearch] = useState("");
+  
   return (
     <>
       {
         watchlist.length !==0 ? (
           <>
             <div className="search">
-              <input placeholder="Search WatchList" type="text"/>
+              <input placeholder="Search WatchList" onChange={(e)=>{
+                setSearch(e.target.value);
+              }} value={search} type="text"/>
             </div>
-            <WatchListTable watchlist={watchlist} removeFromWatchList={removeFromWatchList}></WatchListTable>
+            <WatchListTable search={search} watchlist={watchlist} removeFromWatchList={removeFromWatchList}></WatchListTable>
           </>
         ) : (
           <div className="no-movies-container">

@@ -1,7 +1,7 @@
 import React from 'react'
 import "./WatchListTable.css"
 
-function WatchListTable({watchlist,removeFromWatchList}) {
+function WatchListTable({watchlist,removeFromWatchList,search}) {
   return (
     <table>
         <thead>
@@ -14,7 +14,9 @@ function WatchListTable({watchlist,removeFromWatchList}) {
           </tr>
         </thead>
         <tbody>
-          {watchlist.map((movie) => (
+          {watchlist.filter((movie)=>{
+            return movie.title.toLowerCase().includes(search.toLowerCase())
+          }).map((movie) => (
             <tr key={movie.id}>
               <td className="name-column">
                 <div className="name-poster-container">
