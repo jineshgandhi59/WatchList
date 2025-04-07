@@ -3,7 +3,7 @@ import "./Movies.css";
 import Card from "./Card";
 import Pagination from "./Pagination";
 
-function Movies({watchlist,addToWatchlist,removeFromWatchList}) {
+function Movies() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -34,7 +34,7 @@ function Movies({watchlist,addToWatchlist,removeFromWatchList}) {
       
       <div className="cardCont">
         {movies.map((movie,idx) => (
-          <Card key={idx} movie={movie} removeFromWatchList={removeFromWatchList} watchlist={watchlist} addToWatchlist={addToWatchlist} />
+          <Card key={idx} movie={movie} />
         ))}
       </div>
       

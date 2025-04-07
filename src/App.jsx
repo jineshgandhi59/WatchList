@@ -6,10 +6,21 @@ import Recommended from './Components/Recommended'
 import Banner from './Components/Banner';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState,useEffect } from 'react';
+import { WatchlistContext } from './Components/WatchlistContext';
+
 
 function App() {
 
+
     const [watchlist,setWatchlist] = useState([]);
+
+
+
+    const watchlistFunctions = {
+        watchlist: watchlist,
+        addToWatchlist: addToWatchlist,
+        removeFromWatchList: removeFromWatchList
+    }
 
     function addToWatchlist(movie) {
         let updatedList = [...watchlist,movie];
@@ -40,19 +51,21 @@ function App() {
     
 
     return(
-        <BrowserRouter>
-            <NavBar/>
-            <Routes>
-                <Route path='/' element={
-                    <>
-                        <Banner/>
-                        <Movies removeFromWatchList={removeFromWatchList} addToWatchlist={addToWatchlist} watchlist={watchlist}/>
-                    </>
-                }> </Route>
-                <Route path='/watchlist' element={<WatchList watchlist={watchlist} removeFromWatchList={removeFromWatchList} setWatchlist={setWatchlist}/>}></Route>
-                <Route path='/recommended' element={<Recommended/>}></Route>
-            </Routes>
-        </BrowserRouter>
+        <WatchlistContext.Provider value={watchlistFunctions}>
+            <BrowserRouter>
+                <NavBar/>
+                <Routes>
+                        <Route path='/' element={
+                            <>
+                                <Banner/>
+                                <Movies/>
+                            </>
+                        }> </Route>
+                        <Route path='/watchlist' element={<WatchList/>}></Route>
+                        <Route path='/recommended' element={<Recommended/>}></Route>
+                </Routes>
+            </BrowserRouter>
+        </WatchlistContext.Provider>
     )
 }
 

@@ -1,11 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import "./WatchList.css";
 import WatchListTable from "./WatchListTable";
 import {Link} from 'react-router-dom'
 import { useState } from "react";
 import { genreids } from "../utilities/genre";
+import { WatchlistContext } from "./WatchlistContext";
 
-function WatchList({ watchlist, removeFromWatchList,setWatchlist }) {
+function WatchList() {
+
+  const watchlistFunctions = useContext(WatchlistContext);
+  let {watchlist,addToWatchlist,removeFromWatchList} = watchlistFunctions;
 
   const [search,setSearch] = useState("");
   const [genreList,setGenreList] = useState([]);
@@ -41,7 +45,7 @@ function WatchList({ watchlist, removeFromWatchList,setWatchlist }) {
             }
             </div>
 
-            <WatchListTable setWatchlist={setWatchlist} currGenre={currGenre} search={search} watchlist={watchlist} removeFromWatchList={removeFromWatchList}></WatchListTable>
+            <WatchListTable currGenre={currGenre} search={search}></WatchListTable>
           </>
         ) : (
           <div className="no-movies-container">

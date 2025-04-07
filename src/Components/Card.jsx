@@ -1,7 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import "./Card.css"
+import { WatchlistContext } from './WatchlistContext';
 
-function Card({movie,watchlist,addToWatchlist,removeFromWatchList}) {
+function Card({movie}) {
+
+
+  const watchlistFunctions = useContext(WatchlistContext);
+  let {watchlist,addToWatchlist,removeFromWatchList} = watchlistFunctions;
 
   function watchlistContains(movie) {
     for(let i=0;i<watchlist.length;i++) {

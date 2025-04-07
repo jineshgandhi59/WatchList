@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./WatchListTable.css"
 import {genreids} from "../utilities/genre.js"
+import { WatchlistContext } from './WatchlistContext.jsx';
 
-function WatchListTable({watchlist,removeFromWatchList,search,currGenre,setWatchlist}) {
+function WatchListTable({search,currGenre}) {
+
+  const watchlistFunctions = useContext(WatchlistContext);
+  let {watchlist,addToWatchlist,removeFromWatchList} = watchlistFunctions;
 
   return (
     <table>
